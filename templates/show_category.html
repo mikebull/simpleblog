@@ -8,7 +8,7 @@
 			<li class="current"><a href="/">Home</a></li>
 			<li><a href="{% url blog.views.add_post %}">Add Post</a></li>
 			<li><a href="{% url blog.views.add_category %}">Add Category</a></li>
-			<li><a href="{% url blog.views.add_author %}">Add User</a></li>
+			<li><a href="{% url blog.views.add_author %}">Add Author</a></li>
 			<li><a href="{% url blog.views.edit_category category.id %}">Edit category</a></li>
 		</ul>
 	</nav>
@@ -16,8 +16,7 @@
 
 {% block content %}
 	
-	<h2>{{ category.title }}</h2>
-	<h3>{{ category.description }}</h3>
+	<h2>View all posts relating to {{ category.description }}</h2>
 	
 	{% for post in posts %}
 	<article class="post">
@@ -28,8 +27,8 @@
 			<a class="continue" href="{{ post.get_absolute_url }}">Continue</a>
 		</div><!-- /.post-body -->
 		<footer class="post-footer">
-			<p>Posted by {{ post.author }}</p>
-			<p class="category">In <a href="{{ post.categories.get_absolute_url }}">{{ post.categories}}</a></p>
+			<p class="author">Posted by {{ post.author }}</p>
+			<p class="category">In <a href="{{ post.categories.get_absolute_url }}">{{ post.categories}}</a> with {{ post.comment_set.count }} {% if post.comment_set.count == 1 %} comment {% else %} comments {% endif %}</p>
 		</footer><!-- /.post-footer -->
 	</article><!-- /.post -->
 	

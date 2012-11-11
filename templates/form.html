@@ -28,7 +28,7 @@
 			<li><a href="/">Home</a></li>
 			<li><a href="{% url blog.views.add_post %}">Add Post</a></li>
 			<li><a href="{% url blog.views.add_category %}">Add Category</a></li>
-			<li><a href="{% url blog.views.add_author %}">Add User</a></li>
+			<li><a href="{% url blog.views.add_author %}">Add Author</a></li>
 		</ul>
 	</nav>
 {% endblock %}
@@ -45,7 +45,7 @@
 						Edit Post
 						{% else %}
 							{% if action == "add_category" %}
-								Add Categpry
+								Add Category
 								{% else %}
 									{% if action == "edit_category" %}
 										Edit Category
@@ -69,7 +69,7 @@
 						Edit Post
 						{% else %}
 							{% if action == "add_category" %}
-								Add Categpry
+								Add Category
 								{% else %}
 									{% if action == "edit_category" %}
 										Edit Category

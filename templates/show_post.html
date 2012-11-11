@@ -8,7 +8,7 @@
 			<li class="current"><a href="/">Home</a></li>
 			<li><a href="{% url blog.views.add_post %}">Add Post</a></li>
 			<li><a href="{% url blog.views.add_category %}">Add Category</a></li>
-			<li><a href="{% url blog.views.add_author %}">Add User</a></li>
+			<li><a href="{% url blog.views.add_author %}">Add Author</a></li>
 			<li><a href="{% url blog.views.edit_post post.id %}">Edit Post</a></li>
 			<li><a onclick="return confirm('Are you sure that you want to delete this post?');" href="{% url blog.views.delete_post post.id %}">Delete Post</a></li>
 		</ul>
@@ -31,7 +31,7 @@
 			{{ post.body|linebreaks}}
 		</div><!-- /.post-body -->
 		<footer class="post-footer">
-			<p>Posted by <a href="{{ post.author.get_absolute_url }}">{{ post.author|default:"Anonymous" }}</a></p>
+			<p class="author">Posted by <a href="{{ post.author.get_absolute_url }}">{{ post.author|default:"Anonymous" }}</a></p>
 			<p class="category">In <a href="{{ post.categories.get_absolute_url }}">{{ post.categories.title }}</a></p>
 		</footer><!-- /.post-footer -->
 		
@@ -51,11 +51,12 @@
 				<article class="post-comment">
 					<div class="comment-body">
 						<span class="date"><a href="#" title="{{ comment.created|date:"c" }}">{{ comment.created|date:"jS F, Y" }}</a></span>
-						<h3>{{ comment.author|default:"Anonymous" }} says</h3>
 						{{ comment.body|linebreaks }}	
 					</div>
 					<footer class="comment-footer">
-						<a class="delete" onclick="return confirm('Are you sure that you want to delete this comment?');" href="{% url blog.views.delete_comment comment.id %}">Delete comment</a>
+						<p class="author">Comment by {{ comment.author|default:"Anonymous" }}</p>
+						<p class="delete"><a class="delete" onclick="return confirm('Are you sure that you want to delete this comment?');" href="{% url blog.views.delete_comment comment.id %}">Delete comment</a></p>
+						
 					</footer>
 				</article>
 			{% endfor %}

@@ -2,6 +2,8 @@
 
 @import 'http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css';
 
+/* BASE TAGS ======================================================== */
+
 html {
     color: #333333;
     font-family: Georgia,serif;
@@ -20,6 +22,36 @@ body {
     margin: 0;
 }
 
+article,
+header,
+label {
+    display: block;
+}
+
+/* LINK STATES ====================================================== */
+
+a {
+    color: #214583;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #214583;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* USEFUL CLASSES =================================================== */
+
+.container {
+    margin: 0 auto;
+    max-width: 620px;
+    padding: 0;
+    position: relative;
+}
+
+/* HEADER =========================================================== */
+
 #corpus .blog-header {
     overflow: hidden;
     padding: 10px 0;
@@ -36,6 +68,8 @@ body {
     padding: 1em;
     vertical-align: middle;
 }
+
+/* NAV ============================================================== */
 
 #corpus .blog-header .site-nav {
 
@@ -54,39 +88,24 @@ body {
     margin: 0 12px 0 0;
 }
 
-#corpus #main-content {
-    margin-bottom: 6em;
-    margin-top: 2em;
-}
-
-#corpus .container {
-    margin: 0 auto;
-    max-width: 620px;
-    padding: 0;
-    position: relative;
-}
-
-article,
-header,
-label {
-    display: block;
-}
-
-a {
-    color: #214583;
-    text-decoration: none;
-}
-
-a:hover {
-    background-color: #214583;
-    color: #fff;
-    text-decoration: none;
-}
+/* OTHER STYLES ===================================================== */
 
 #corpus .container #breadcrumbs {
     font-size: 0.825em;
     margin: 0 auto;
     padding: 0 0 1em;
+}
+
+#corpus #main-content {
+    margin-bottom: 6em;
+    margin-top: 2em;
+}
+
+#corpus #main-content .container h2 {
+    color: #222222;
+    font-size: 1.5em;
+    line-height: 1.2em;
+    margin: 0 0 1em;
 }
 
 #corpus #main-content .container .post {
@@ -149,7 +168,16 @@ a:hover {
     padding: 0.5em 0 0;
 }
 
-#corpus #main-content .container .post .post-footer p {
+#corpus #main-content .container .post .comment .post-comment .comment-footer .author {
+    text-align: left;
+}
+
+#corpus #main-content .container .post .comment .post-comment .comment-footer .delete {
+    text-align: right;
+}
+
+#corpus #main-content .container .post .post-footer p,
+#corpus #main-content .container .post .comment .post-comment .comment-footer p {
     display: block;
     float: left;
     font-size: 0.8125em;
