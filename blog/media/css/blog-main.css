@@ -1,0 +1,192 @@
+@charset 'utf-8';
+
+@import 'http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css';
+
+html {
+    color: #333333;
+    font-family: Georgia,serif;
+    font-size: 16px;
+    line-height: 1.5em;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: bold;
+}
+
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    margin: 0;
+}
+
+#corpus .blog-header {
+    overflow: hidden;
+    padding: 10px 0;
+    position: relative;
+}
+
+#corpus .blog-header .site-h1 {
+    background-color: #214583;
+    color: #FFFFFF;
+    font-size: 1em;
+    font-style: italic;
+    line-height: 1em;
+    margin: 0 0 0.5em;
+    padding: 1em;
+    vertical-align: middle;
+}
+
+#corpus .blog-header .site-nav {
+
+}
+
+#corpus .blog-header .site-nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+#corpus .blog-header .site-nav ul li {
+    display: block;
+    float: left;
+    font-size: 1em;
+    list-style: none outside none;
+    margin: 0 12px 0 0;
+}
+
+#corpus #main-content {
+    margin-bottom: 6em;
+    margin-top: 2em;
+}
+
+#corpus .container {
+    margin: 0 auto;
+    max-width: 620px;
+    padding: 0;
+    position: relative;
+}
+
+article,
+header,
+label {
+    display: block;
+}
+
+a {
+    color: #214583;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #214583;
+    color: #fff;
+    text-decoration: none;
+}
+
+#corpus .container #breadcrumbs {
+    font-size: 0.825em;
+    margin: 0 auto;
+    padding: 0 0 1em;
+}
+
+#corpus #main-content .container .post {
+    margin: 0 0 3em;
+}
+
+#corpus #main-content .container .post .date a {
+    border-bottom: 1px dotted #777;
+    font-size: 0.875em;
+    margin: 0 0 2em;
+    padding: 0 0 10px;
+    color: #777;
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+#corpus #main-content .container .post .date a:hover {
+    border-bottom: 1px solid #777;
+    background: none;
+    color: #777;
+}
+
+#corpus #main-content .container .post h2 {
+    color: #222;
+    font-size: 2.5em;
+    line-height: 1.2em;
+    margin: 0 0 0.5em;
+}
+
+#corpus #main-content .container .post h2 a {
+    color: #214583;
+    text-decoration: none;
+}
+
+#corpus #main-content .container .post h2 a:hover {
+    background-color: #214583;
+    color: #fff;
+    text-decoration: none;
+}
+
+#corpus #main-content .container .post .post-body {
+    color: #333;
+    font-size: 1.25em;
+    line-height: 1.75em;
+}
+
+#corpus #main-content .container .post .post-body .continue {
+    display: block;
+    overflow: hidden;
+}
+
+#corpus #main-content .container .post .post-footer,
+#corpus #main-content .container .post .comment .post-comment .comment-footer {
+    border-top: 1px solid #EEEEEE;
+    font-style: italic;
+    line-height: 1em;
+    overflow: hidden;
+    margin: 2em 0 0;
+    padding: 0.5em 0 0;
+}
+
+#corpus #main-content .container .post .post-footer p {
+    display: block;
+    float: left;
+    font-size: 0.8125em;
+    margin: 0;
+    width: 50%;
+}
+
+#corpus #main-content .container .post .post-footer .author {
+    text-align: left;
+}
+
+#corpus #main-content .container .post .post-footer .category {
+    text-align: right;
+}
+
+#corpus #main-content .container .post .comment {
+    margin: 2em 0;
+}
+
+#corpus #main-content .container .post .comment h2 {
+    color: #333;
+    font-size: 1.5em;
+    line-height: 1.2em;
+    margin: 0 0 1em;
+}
+
+#corpus #main-content .container .post .comment .post-comment {
+    margin: 0 0 3em;
+}
+
+#corpus #main-content .container .post .comment .add-comment {
+    margin: 0 0 1em;
+}
+
+#corpus #main-content .container .post .comment h3 {
+    color: #333;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    margin: 0 0 1em;
+}

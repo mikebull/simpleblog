@@ -19,6 +19,8 @@
 	<div id="breadcrumbs">
 		<a href="/">Home</a>&nbsp;
 		<img src="/static/blog/img/breadcrumb-arrow.png" alt="&gt;">&nbsp;
+		<a href="{{ post.categories.get_absolute_url }}">{{ post.categories.title }}</a>&nbsp;
+		<img src="/static/blog/img/breadcrumb-arrow.png" alt="&gt;">&nbsp;
 		<em>{{ post.title }}</em>
 	</div>
 			
@@ -29,32 +31,42 @@
 			{{ post.body|linebreaks}}
 		</div><!-- /.post-body -->
 		<footer class="post-footer">
-			<p>Posted by {{ post.author|default:"Anonymous" }}</p>
-			<p class="category">In <a href="#">News</a></p>
+			<p>Posted by <a href="{{ post.author.get_absolute_url }}">{{ post.author|default:"Anonymous" }}</a></p>
+			<p class="category">In <a href="{{ post.categories.get_absolute_url }}">{{ post.categories.title }}</a></p>
 		</footer><!-- /.post-footer -->
 		
 		<div class="comment">
+			<h2>
+				{% if post.comment_set.count == 0 %}
+					There are currently no comments
+				{% else %}
+					{% if post.comment_set.count == 1 %}
+						There is currently {{ post.comment_set.count }} comment
+					{% else %}
+						There are currently {{ post.comment_set.count }} comments
+					{% endif %}
+				{% endif %}
+			</h2>
+			{% for comment in post.comment_set.all %}
+				<article class="post-comment">
+					<div class="comment-body">
+						<span class="date"><a href="#" title="{{ comment.created|date:"c" }}">{{ comment.created|date:"jS F, Y" }}</a></span>
+						<h3>{{ comment.author|default:"Anonymous" }} says</h3>
+						{{ comment.body|linebreaks }}	
+					</div>
+					<footer class="comment-footer">
+						<a class="delete" onclick="return confirm('Are you sure that you want to delete this comment?');" href="{% url blog.views.delete_comment comment.id %}">Delete comment</a>
+					</footer>
+				</article>
+			{% endfor %}
 			<div class="add-comment">
+				<h3>Add comment</h3>
 				<form action="" method="post" accept-charset="utf-8">
 					{{ form.as_p }}
 					<p class="buttons"><input type="submit" value="Submit Comment"></p>
 				</form>
 			</div><!-- /.add-comment -->
 			
-			<h2>
-				{% if post.comment_set.count == 1 %}
-					{{ post.comment_set.count }} comments
-				{% else %}
-					{{ post.comment_set.count}} comments
-				{% endif %}</h2>
-			{% for comment in post.comment_set.all %}
-				<article class="post-comment">
-					<span class="date"><a href="#" title="{{ comment.created|date:"c" }}">{{ comment.created|date:"jS F, Y" }}</a></span>
-					<h3>{{ comment.author|default:"Anonymous" }} says</h3>
-					{{ comment.body|linebreaks }}
-					<a class="delete" onclick="return confirm('Are you sure to delete this comment?');" href="{% url blog.views.delete_comment comment.id %}">Delete comment</a>
-				</article>
-			{% endfor %}
 		</div><!-- /.comment -->
 	</article><!-- /.post -->
 			
