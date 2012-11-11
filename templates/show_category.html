@@ -1,0 +1,38 @@
+{% extends 'blog_base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block nav %}
+	<nav role="navigation" class="site-nav">
+		<ul>
+			<li class="current"><a href="/">Home</a></li>
+			<li><a href="{% url blog.views.add_post %}">Add Post</a></li>
+			<li><a href="{% url blog.views.add_category %}">Add Category</a></li>
+			<li><a href="{% url blog.views.add_author %}">Add User</a></li>
+			<li><a href="{% url blog.views.edit_category category.id %}">Edit category</a></li>
+		</ul>
+	</nav>
+{% endblock %}
+
+{% block content %}
+	
+	<h2>{{ category.title }}</h2>
+	<h3>{{ category.description }}</h3>
+	
+	{% for post in posts %}
+	<article class="post">
+		<span class="date"><a href="#" title="{{ post.created|date:"c" }}">{{ post.created|date:"jS F, Y" }}</a></span>
+		<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+		<div class="post-body">
+			{{ post.body|linebreaks|truncatewords:100}}
+			<a class="continue" href="{{ post.get_absolute_url }}">Continue</a>
+		</div><!-- /.post-body -->
+		<footer class="post-footer">
+			<p>Posted by {{ post.author }}</p>
+			<p class="category">In <a href="{{ post.categories.get_absolute_url }}">{{ post.categories}}</a></p>
+		</footer><!-- /.post-footer -->
+	</article><!-- /.post -->
+	
+	{% endfor %}
+	</div>
+{% endblock %}

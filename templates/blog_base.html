@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+    <html lang="en-gb">
+    <head>        
+        <!-- date format:
+                DOW, DD MON YYYY HH:MM:SS TZ
+                e.g. Wed, 26 Feb 1997 08:21:57 GMT
+                'never' = never expires
+                '0' = instant expiration -->
+        
+        <!-- Current Page's Title -->
+        <title>{% block title %}{% endblock %}</title><!-- 66 characters maximum to avoid truncation in search results -->
+        
+        <!-- Search Engine/Directory Listings -->
+        <meta name="description" content="Template for Potato project" /><!-- 150-character description of page content, ideally fed from a dedicated 'short description' item field in Sitecore -->
+        
+        <!-- Author and Copyright Declarations -->
+        <meta name="author" content="Mike Bull" />
+        
+        <!-- Search Engine Indexing -->
+        <meta name="robots" content="ALL" />
+        <!-- values:
+                ALL
+                INDEX
+                NOINDEX
+                FOLLOW
+                NOFOLLOW
+                ARCHIVE
+                NOARCHIVE
+                NOIMAGEINDEX
+                NONE -->
+                
+        <!-- Viewport setting -->
+        <meta name="viewport" content="width=device-width" />	
+        
+        <!-- Favicon -->
+        <link rel="Shortcut Icon" type="image/x-icon" href="favicon.ico" />
+       
+        
+        <!-- Style Sheet(s) -->
+        <link type="text/css" rel="stylesheet" href="/static/blog/css/blog-main.css" />
+        <!--[if lte IE 7]>
+        <link type="text/css" rel="stylesheet" href="/static/blog/css/blog-main-ie7.css" />
+        <![endif]-->
+        <!--[if lte IE 6]>
+        <link type="text/css" rel="stylesheet" href="/static/blog/css/blog-main-ie6.css" />
+        <![endif]-->
+        
+	<!-- JavaScript Library/ies -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        
+        <script type="text/javascript" src="/js/blog-main.js"></script>
+	
+	{% block css %}
+	{% endblock %}
+    
+	{% block preload_js %}
+	{% endblock %}
+    
+	{% block extra-head %}
+	{% endblock %}
+    </head>
+    
+    <body>
+	<div id="corpus">
+	    <header role="banner" class="blog-header">
+		<div class="container">
+		    <h1 class="site-h1">Mike's Blog</h1>
+		    {% block nav %}
+		    {% endblock %}
+		</div>
+	    </header>
+	    
+	    <div id="main-content" role="main">
+		<div class="container">
+		    {% block content %}
+		    {% endblock %}
+		</div><!-- /.container -->
+	    </div><!-- /#main-content -->
+        </div><!-- /#corpus -->
+    </body>
+    
+</html>

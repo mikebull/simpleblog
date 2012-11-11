@@ -1,0 +1,61 @@
+{% extends 'blog_base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block nav %}
+	<nav role="navigation" class="site-nav">
+		<ul>
+			<li class="current"><a href="/">Home</a></li>
+			<li><a href="{% url blog.views.add_post %}">Add Post</a></li>
+			<li><a href="{% url blog.views.add_category %}">Add Category</a></li>
+			<li><a href="{% url blog.views.add_author %}">Add User</a></li>
+			<li><a href="{% url blog.views.edit_post post.id %}">Edit Post</a></li>
+			<li><a onclick="return confirm('Are you sure that you want to delete this post?');" href="{% url blog.views.delete_post post.id %}">Delete Post</a></li>
+		</ul>
+	</nav>
+{% endblock %}
+
+{% block content %}
+	<div id="breadcrumbs">
+		<a href="/">Home</a>&nbsp;
+		<img src="/static/blog/img/breadcrumb-arrow.png" alt="&gt;">&nbsp;
+		<em>{{ post.title }}</em>
+	</div>
+			
+	<article class="post">
+		<span class="date"><a href="#" title="{{ post.created|date:"c" }}">{{ post.created|date:"jS F, Y" }}</a></span>
+		<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+		<div class="post-body">
+			{{ post.body|linebreaks}}
+		</div><!-- /.post-body -->
+		<footer class="post-footer">
+			<p>Posted by {{ post.author|default:"Anonymous" }}</p>
+			<p class="category">In <a href="#">News</a></p>
+		</footer><!-- /.post-footer -->
+		
+		<div class="comment">
+			<div class="add-comment">
+				<form action="" method="post" accept-charset="utf-8">
+					{{ form.as_p }}
+					<p class="buttons"><input type="submit" value="Submit Comment"></p>
+				</form>
+			</div><!-- /.add-comment -->
+			
+			<h2>
+				{% if post.comment_set.count == 1 %}
+					{{ post.comment_set.count }} comments
+				{% else %}
+					{{ post.comment_set.count}} comments
+				{% endif %}</h2>
+			{% for comment in post.comment_set.all %}
+				<article class="post-comment">
+					<span class="date"><a href="#" title="{{ comment.created|date:"c" }}">{{ comment.created|date:"jS F, Y" }}</a></span>
+					<h3>{{ comment.author|default:"Anonymous" }} says</h3>
+					{{ comment.body|linebreaks }}
+					<a class="delete" onclick="return confirm('Are you sure to delete this comment?');" href="{% url blog.views.delete_comment comment.id %}">Delete comment</a>
+				</article>
+			{% endfor %}
+		</div><!-- /.comment -->
+	</article><!-- /.post -->
+			
+{% endblock %}
