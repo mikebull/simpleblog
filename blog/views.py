@@ -92,7 +92,7 @@ def add_post(request):
         if form.is_valid():
             form.save()
             post = Post.objects.get(title=form.cleaned_data['title'])
-            return HttpResponseRedirect(reverse('blog.views.get_post',args=(post.categories.slug,post.slug,)))
+            return HttpResponseRedirect(reverse('blog.views.get_post',args=(post.created.year, post.created.month, post.categories.slug,post.slug,)))
     else:
         form = PostForm()
     return render_to_response('form.html', {'form':form, 'action':'add_post'}, RequestContext(request))
@@ -110,7 +110,7 @@ def edit_post(request, id):
             post.body = post_edited.body
             post.author = post_edited.author
             post.save()
-        return HttpResponseRedirect(reverse('blog.views.get_post',args=(post.categories.slug,post.slug,)))
+        return HttpResponseRedirect(reverse('blog.views.get_post',args=(post.created.year, post.created.month, post.categories.slug,post.slug,)))
     else:
         form = PostForm(instance=post)
     return render_to_response('form.html', {'form': form, 'action':'edit_post'}, RequestContext(request))
@@ -132,9 +132,9 @@ def delete_comment(request, id):
     comment = get_object_or_404(Comment, id=id)
     post = comment.post
     comment.delete()
-    return HttpResponseRedirect(reverse('blog.views.get_post',args=(post.categories.slug,post.slug,)))
+    return HttpResponseRedirect(reverse('blog.views.get_post',args=(post.created.year, post.created.month, post.categories.slug,post.slug,)))
 
-def get_post(request, categories, slug):
+def get_post(request, year, month, categories, slug):
     '''
     Gets post by category
     '''

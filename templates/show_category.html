@@ -16,7 +16,11 @@
 
 {% block content %}
 	
-	<h2>View all posts relating to {{ category.description }}</h2>
+	{% if posts.count == 0 %}
+		<h2>Sorry, there are currently no posts relating to {{ category.description }}</h2>
+	{% else %}
+		<h2>View all posts relating to {{ category.description }}</h2>
+	{% endif %}
 	
 	{% for post in posts %}
 	<article class="post">

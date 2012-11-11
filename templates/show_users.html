@@ -21,7 +21,11 @@
 		<em>{{ author.username }}</em>
 	</div>
 	
-	<h2>View all posts by {{ author.username }} ({{ author.full_name }})</h2>
+	{% if posts.count == 0 %}
+		<h2>Sorry, it seems that {{ author.username }} ({{ author.full_name }}) has not made any posts yet!</h2>
+	{% else %}
+		<h2>View all posts by {{ author.username }} ({{ author.full_name }})</h2>
+	{% endif %}
 	
 	{% for post in posts %}
 	<article class="post">

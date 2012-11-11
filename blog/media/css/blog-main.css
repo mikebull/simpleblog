@@ -153,6 +153,10 @@ a:hover {
     line-height: 1.75em;
 }
 
+#corpus #main-content .container .post .post-body p {
+    margin: 0 0 1.5em;
+}
+
 #corpus #main-content .container .post .post-body .continue {
     display: block;
     overflow: hidden;
