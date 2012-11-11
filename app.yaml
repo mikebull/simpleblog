@@ -1,8 +1,7 @@
-application: ctst
+application: simpleblog
 version: 1
-runtime: python27
+runtime: python
 api_version: 1
-threadsafe: yes
 
 builtins:
 - remote_api: on
@@ -10,21 +9,21 @@ builtins:
 inbound_services:
 - warmup
 
-libraries:
-- name: django
-  version: latest
-
 handlers:
 - url: /_ah/queue/deferred
-  script: djangoappengine.deferred.handler.application
+  script: djangoappengine/deferred/handler.py
   login: admin
 
 - url: /_ah/stats/.*
-  script: djangoappengine.appstats.application
+  script: djangoappengine/appstats/ui.py
+
+- url: /static/blog
+  static_dir: blog/media
+  expiration: '0'
 
 - url: /media/admin
   static_dir: django/contrib/admin/media
   expiration: '0'
 
 - url: /.*
-  script: djangoappengine.main.application
+  script: djangoappengine/main/main.py
