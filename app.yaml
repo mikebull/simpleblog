@@ -10,6 +10,14 @@ inbound_services:
 - warmup
 
 handlers:
+- url: /favicon.ico
+  static_files: blog/media/img/favicon.ico
+  upload: blog/media/img/favicon.ico
+
+- url: /robots.txt
+  static_files: blog/media/robots.txt
+  upload: blog/media/robots.txt
+  
 - url: /_ah/queue/deferred
   script: djangoappengine/deferred/handler.py
   login: admin

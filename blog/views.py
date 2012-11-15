@@ -5,6 +5,8 @@ from django.shortcuts import render_to_response, get_object_or_404
 from blog.models import Author, Category, Comment, Post
 from blog.forms import AuthorForm, CategoryForm, CommentForm, PostForm
 
+from tinymce.widgets import TinyMCE
+
 def add_author(request):
     '''
     Adds a blog author
@@ -92,7 +94,8 @@ def add_post(request):
         if form.is_valid():
             form.save()
             post = Post.objects.get(title=form.cleaned_data['title'])
-            return HttpResponseRedirect(reverse('blog.views.get_post',args=(post.created.year, post.created.month, post.categories.slug,post.slug,)))
+            categories = post.categories.slug
+            return HttpResponseRedirect(reverse('blog.views.get_post',args=(categories, post.created.year, post.created.month, post.slug,)))
     else:
         form = PostForm()
     return render_to_response('form.html', {'form':form, 'action':'add_post'}, RequestContext(request))
@@ -110,7 +113,7 @@ def edit_post(request, id):
             post.body = post_edited.body
             post.author = post_edited.author
             post.save()
-        return HttpResponseRedirect(reverse('blog.views.get_post',args=(post.created.year, post.created.month, post.categories.slug,post.slug,)))
+        return HttpResponseRedirect(reverse('blog.views.get_post',args=(post.categories.slug, post.created.year, post.created.month, post.slug,)))
     else:
         form = PostForm(instance=post)
     return render_to_response('form.html', {'form': form, 'action':'edit_post'}, RequestContext(request))

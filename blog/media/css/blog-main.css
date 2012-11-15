@@ -22,6 +22,10 @@ body {
     margin: 0;
 }
 
+strong {
+    font-weight: bold;
+}
+
 article,
 header,
 label {
@@ -153,12 +157,22 @@ a:hover {
     line-height: 1.75em;
 }
 
+#corpus #main-content .container .post .post-body ul {
+    list-style: disc outside none;
+    margin-left: 15px;
+}
+
+#corpus #main-content .container .post .post-body ul li {
+    list-style: disc outside none;
+}
+
 #corpus #main-content .container .post .post-body p {
     margin: 0 0 1.5em;
 }
 
 #corpus #main-content .container .post .post-body .continue {
     display: block;
+    margin: 1em 0 0;
     overflow: hidden;
 }
 

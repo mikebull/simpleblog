@@ -20,11 +20,21 @@ INSTALLED_APPS = (
     'djangotoolbox',
     'autoload',
     'dbindexer',
+    'tinymce',
     'blog',
 
     # djangoappengine should come last, so it can override a few manage.py commands
     'djangoappengine',
 )
+
+
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': "advanced",
+    'theme_advanced_toolbar_location' : "top",
+    'theme_advanced_buttons1': "bold,italic,underline,separator,bullist,separator,outdent,indent,separator,undo,redo",
+    'theme_advanced_buttons2': "",
+    'theme_advanced_buttons3': "",
+}
 
 MIDDLEWARE_CLASSES = (
     # This loads the index definitions, so it has to come first

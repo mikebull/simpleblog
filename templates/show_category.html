@@ -27,7 +27,7 @@
 		<span class="date"><a href="#" title="{{ post.created|date:"c" }}">{{ post.created|date:"jS F, Y" }}</a></span>
 		<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
 		<div class="post-body">
-			{{ post.body|linebreaks|truncatewords:100}}
+			{{ post.body|safe|truncatewords:100}}
 			<a class="continue" href="{{ post.get_absolute_url }}">Continue</a>
 		</div><!-- /.post-body -->
 		<footer class="post-footer">
