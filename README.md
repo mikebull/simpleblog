@@ -12,3 +12,5 @@ The following projects were used to run this blog application:
 - [django-autoload](https://bitbucket.org/twanschik/django-autoload)
 - [django-dbindexer](https://github.com/django-nonrel/django-dbindexer)
 - [django-testapp](https://github.com/django-nonrel/django-testapp)
+- [django-tinymce](https://github.com/aljosa/django-tinymce)
+- [html5lib](http://code.google.com/p/html5lib/)

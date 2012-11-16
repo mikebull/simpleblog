@@ -4,7 +4,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from blog.models import Author, Category, Comment, Post
 from blog.forms import AuthorForm, CategoryForm, CommentForm, PostForm
-
+from blog.utils import sanitise_html
 from tinymce.widgets import TinyMCE
 
 def add_author(request):
@@ -92,7 +92,9 @@ def add_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            form.save()
+            new_post = form.save(commit=False)
+            new_post.body = sanitise_html(new_post.body)
+            new_post.save()
             post = Post.objects.get(title=form.cleaned_data['title'])
             categories = post.categories.slug
             return HttpResponseRedirect(reverse('blog.views.get_post',args=(categories, post.created.year, post.created.month, post.slug,)))
@@ -110,7 +112,7 @@ def edit_post(request, id):
         if form.is_valid():
             post_edited = form.save(commit=False)
             post.title = post_edited.title
-            post.body = post_edited.body
+            post.body = sanitise_html(post_edited.body)
             post.author = post_edited.author
             post.save()
         return HttpResponseRedirect(reverse('blog.views.get_post',args=(post.categories.slug, post.created.year, post.created.month, post.slug,)))

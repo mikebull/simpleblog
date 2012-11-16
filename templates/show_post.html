@@ -28,7 +28,7 @@
 		<span class="date"><a href="#" title="{{ post.created|date:"c" }}">{{ post.created|date:"jS F, Y" }}</a></span>
 		<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
 		<div class="post-body">
-			{{ post.body|safe}}
+			{{ post.body|safe|escape }}
 		</div><!-- /.post-body -->
 		<footer class="post-footer">
 			<p class="author">Posted by <a href="{{ post.author.get_absolute_url }}">{{ post.author|default:"Anonymous" }}</a></p>

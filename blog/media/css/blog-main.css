@@ -26,6 +26,10 @@ strong {
     font-weight: bold;
 }
 
+em {
+    font-style: italic;
+}
+
 article,
 header,
 label {
