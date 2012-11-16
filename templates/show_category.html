@@ -31,7 +31,7 @@
 			<a class="continue" href="{{ post.get_absolute_url }}">Continue</a>
 		</div><!-- /.post-body -->
 		<footer class="post-footer">
-			<p class="author">Posted by {{ post.author }}</p>
+			<p class="author">Posted by <a href="{{ post.author.get_absolute_url }}">{{ post.author|default:"Anonymous" }}</a></p>
 			<p class="category">In <a href="{{ post.categories.get_absolute_url }}">{{ post.categories}}</a> with {{ post.comment_set.count }} {% if post.comment_set.count == 1 %} comment {% else %} comments {% endif %}</p>
 		</footer><!-- /.post-footer -->
 	</article><!-- /.post -->
