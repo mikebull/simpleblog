@@ -96,8 +96,8 @@ def add_post(request):
             new_post.body = sanitise_html(new_post.body)
             new_post.save()
             post = Post.objects.get(title=form.cleaned_data['title'])
-            categories = post.categories.slug
-            return HttpResponseRedirect(reverse('blog.views.get_post',args=(categories, post.created.year, post.created.month, post.slug,)))
+            post_categories = post.categories.slug
+            return HttpResponseRedirect(reverse('blog.views.get_post',args=(post_categories, post.created.year, post.created.month, post.slug,)))
     else:
         form = PostForm()
     return render_to_response('form.html', {'form':form, 'action':'add_post'}, RequestContext(request))
