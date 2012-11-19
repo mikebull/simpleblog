@@ -114,6 +114,7 @@ def edit_post(request, id):
             post.title = post_edited.title
             post.body = sanitise_html(post_edited.body)
             post.author = post_edited.author
+            post.categories = post_edited.categories
             post.save()
         return HttpResponseRedirect(reverse('blog.views.get_post',args=(post.categories.slug, post.created.year, post.created.month, post.slug,)))
     else:
