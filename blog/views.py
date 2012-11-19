@@ -27,7 +27,7 @@ def edit_author(request, id):
     '''
     author = get_object_or_404(Author, id=id)
     if request.method == 'POST':
-        form = AuthorForm(request.POST)
+        form = AuthorForm(request.POST, instance=author)
         if form.is_valid():
             author_edited = form.save(commit=False)
             author.username = author_edited.username
@@ -66,7 +66,7 @@ def edit_category(request, id):
     '''
     category = get_object_or_404(Category, id=id)
     if request.method == 'POST':
-        form = CategoryForm(request.POST)
+        form = CategoryForm(request.POST, instance=category)
         if form.is_valid():
             category_edited = form.save(commit=False)
             category.title = category_edited.title
