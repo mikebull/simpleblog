@@ -6,7 +6,6 @@ urlpatterns = patterns('blog.views',
     (r'^$', list_detail.object_list, {'queryset': Post.objects.order_by('-created'),
                                     'template_name': 'display_posts.html',
                                     'template_object_name': 'post'}),
-  
     (r'^add_post$', 'add_post'),
     (r'^add_author$', 'add_author'),
     (r'^add_category$', 'add_category'),
