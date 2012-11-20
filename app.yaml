@@ -10,6 +10,10 @@ builtins:
 inbound_services:
 - warmup
 
+libraries:
+- name: django
+  version: latest
+
 handlers:
 - url: /favicon.ico
   static_files: blog/media/img/favicon.ico
